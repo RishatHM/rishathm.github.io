@@ -36,12 +36,12 @@
         <p>Верстка на HTML и CSS <br> Разработка сайтов под ключ</p>  
       </div>
     </div>
-    <a href="#portfolio" class="main-down"><i class="icon-down"></i></a>
+    <a href="#portfolio" class="main-down slowly"><i class="icon-down"></i></a>
     </div>
 
-    <div class="portfolio"">
+    <div class="portfolio" id="portfolio">
       <div class="container">
-        <h2 class="section-header" id="portfolio">Портфолио</h2>
+        <h2 class="section-header">Портфолио</h2>
         <div class="row">
           <div class="col-md-4">
             <div class="portfolio-block">
@@ -121,6 +121,20 @@
           var work = $(this).attr('data-work');
           var modal = $('.modal');
           modal.find('.modal-body').load(work+'.html');
+        });
+      });
+    </script>
+    <script>
+       $(document).ready(function(){
+        $(".slowly").on("click", function (event) {
+          //отменяем стандартную обработку нажатия по ссылке
+          event.preventDefault();
+          //забираем идентификатор бока с атрибута href
+          var id  = $(this).attr('href'),
+          //узнаем высоту от начала страницы до блока на который ссылается якорь
+            top = $(id).offset().top;
+          //анимируем переход на расстояние - top за 1500 мс
+          $('body,html').animate({scrollTop: top}, 800);
         });
       });
     </script>
